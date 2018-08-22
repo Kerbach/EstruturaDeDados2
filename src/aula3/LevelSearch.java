@@ -21,28 +21,56 @@ public class LevelSearch
     public static void main(String[] args)
     {
 
-        //BinaryTree tree = new BinaryTree("A");
-        //Node a = tree.getRoot();
-        //Node b = tree.addLeftChild(a, "B");
-        //Node c = tree.addrightChild(a, "C");
-        //Node d = tree.addrightChild(b, "D");
+        BinaryTree tree = new BinaryTree("A");
+        Node a = tree.getRoot();
+        Node b = tree.addLeftChild(a, "B");
+        Node c = tree.addRightChild(a, "C");
+                 tree.addLeftChild(b, "D");
+                 tree.addRightChild(b, "E");
+                 tree.addLeftChild(c, "F");
+                 tree.addRightChild(c, "G");
         //System.out.println("Level:");
         //level(a);
         // ----
-        Node a = tree.getRoot();
-        Node b = tree.addLeftChild(a, "*");
-        Node c = tree.addRightChild(a, "-");
-        Node d = tree.addLeftChild(b, "+");
-        Node e = tree.addRightChild(b, "5");
-        Node f = tree.addLeftChild(c, "8");
-        Node g = tree.addRightChild(c, "*");
-        tree.addLeftChild(d, "1");
-        tree.addRightChild(d, "4");
-        tree.addLeftChild(g, "3");
-        tree.addRightChild(g, "7");
+//        Node a = tree.getRoot();
+//        Node b = tree.addLeftChild(a, "*");
+//        Node c = tree.addRightChild(a, "-");
+//        Node d = tree.addLeftChild(b, "+");
+//        Node e = tree.addRightChild(b, "5");
+//        Node f = tree.addLeftChild(c, "8");
+//        Node g = tree.addRightChild(c, "*");
+//        tree.addLeftChild(d, "1");
+//        tree.addRightChild(d, "4");
+//        tree.addLeftChild(g, "3");
+//        tree.addRightChild(g, "7");
 
         //vis1(a);
-        vis2(a);
+        mistery(a);
+    }
+    
+    public static void mistery(Node n)
+    {
+        ArrayList<Node> stack = new ArrayList<Node>();
+        stack.add(n);
+        int old_level = tree.depth(n);
+        while (stack.size() != 0)
+        {
+            n = stack.remove(stack.size() - 1);
+            System.out.print(n.element + " ");
+            if (tree.depth(n) != old_level)
+            {
+                System.out.println();
+                old_level = tree.depth(n);
+            }
+            if (n.right != null)
+            {
+                stack.add(n.right);
+            }
+            if (n.left != null)
+            {
+                stack.add(n.left);
+            }
+        }
     }
 
     public static void level(Node n)

@@ -48,4 +48,45 @@ public class BinarySearchTree
         }
         return false;
     }
+
+    public void insert(String s)
+    {
+        Node n = this.tree.getRoot();
+        while (n != null)
+        {
+            if (n.element.equals(s))
+            {
+                return;
+            }
+            if (Double.parseDouble(s) < Double.parseDouble(n.element))
+            {
+                if (n.left != null)
+                {
+                    n = n.left;
+                }
+                else
+                {
+                    this.tree.addLeftChild(n, s);
+                    return;
+                }
+            }
+            else
+            {
+                if (n.right != null)
+                {
+                    n = n.right;
+                }
+                else
+                {
+                    this.tree.addRightChild(n, s);
+                    return;
+                }
+            }
+        }
+    }
+    
+    public Node getRoot()
+    {
+        return this.tree.getRoot();
+    }
 }
