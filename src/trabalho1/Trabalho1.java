@@ -9,8 +9,9 @@ public class Trabalho1
 {
 
     public static Node n = new Node();
-    public static ArrayBinaryTree tree = new ArrayBinaryTree(n);
+    public static ArrayBinaryTree arrayBinaryTree = new ArrayBinaryTree(n);
     public static int count = 0;
+    private Node pai;
 
     public static void main(String[] args)
     {
@@ -25,8 +26,9 @@ public class Trabalho1
                 String[] tl = linha.split(delimitador);
                 addNode(tl);
             }
-            int t = getValue(tree.getRoot());
-            System.out.println("Altura: " + tree.altura(tree.getRoot()));
+            int t = getValue(arrayBinaryTree.getRoot());
+            System.out.println("Altura: " + arrayBinaryTree.altura(arrayBinaryTree.getRoot()));
+            //System.out.println("Diâmetro: " + tree.getDiameter(tree.getRoot()));
         }
         catch (IOException e)
         {
@@ -34,43 +36,43 @@ public class Trabalho1
         }
     }
 
-    public static void addNode(String[] tl)
+    public static void addNode(String[] conjunto)
     {
-        int element = 1;
-        int parent = 1;
+        int elemento = 1;
+        int pai = 1;
 
-        for (int i = 0; i < tl.length; i++)
+        for (int i = 0; i < conjunto.length; i++)
         {
-            if (tl[i].equals(":"))
+            if (conjunto[i].equals(":"))
             {
                 continue;
             }
-            if (tl[tl.length - 1].equals(tl[i]))
+            if (conjunto[conjunto.length - 1].equals(conjunto[i]))
             {
-                int value = Integer.parseInt(tl[i].replace("[", "").replace("]", ""));
-                tree.getElement(parent).setValue(value);
+                int value = Integer.parseInt(conjunto[i].replace("[", "").replace("]", ""));
+                arrayBinaryTree.getElement(pai).setValue(value);
                 continue;
             }
 
-            tree.getElement(element).setName(tl[i]);
-            Node left = tree.getElement(tree.leftChild(element));
-            Node right = tree.getElement(tree.rightChild(element));
+            arrayBinaryTree.getElement(elemento).setName(conjunto[i]);
+            Node left = arrayBinaryTree.getElement(arrayBinaryTree.leftChild(elemento));
+            Node right = arrayBinaryTree.getElement(arrayBinaryTree.rightChild(elemento));
 
-            if ((i + 2) > (tl.length - 1))
+            if ((i + 2) > (conjunto.length - 1))
             {
-                parent = element;
+                pai = elemento;
                 continue;
             }
-            if (left.getName().equals(tl[i + 2]) || !tree.hasLeftChild(element))
+            if (left.getName().equals(conjunto[i + 2]) || !arrayBinaryTree.hasLeftChild(elemento))
             {
-                parent = element;
-                element = tree.leftChild(element);
+                pai = elemento;
+                elemento = arrayBinaryTree.leftChild(elemento);
                 continue;
             }
-            if (right.getName().equals(tl[i + 2]) || !tree.hasRightChild(element))
+            if (right.getName().equals(conjunto[i + 2]) || !arrayBinaryTree.hasRightChild(elemento))
             {
-                parent = element;
-                element = tree.rightChild(element);
+                pai = elemento;
+                elemento = arrayBinaryTree.rightChild(elemento);
                 continue;
             }
         }
@@ -78,15 +80,15 @@ public class Trabalho1
 
     public static int getValue(int i)
     {
-        Node n = tree.getElement(i);
-        int t = tree.getElement(i).getValue();
-        if (tree.hasLeftChild(i))
+        Node n = arrayBinaryTree.getElement(i);
+        int t = arrayBinaryTree.getElement(i).getValue();
+        if (arrayBinaryTree.hasLeftChild(i))
         {
-            t += getValue(tree.leftChild(i));
+            t += getValue(arrayBinaryTree.leftChild(i));
         }
-        if (tree.hasRightChild(i))
+        if (arrayBinaryTree.hasRightChild(i))
         {
-            t += getValue(tree.rightChild(i));
+            t += getValue(arrayBinaryTree.rightChild(i));
         }
         System.out.println(n.getName() + " " + t);
         return t;

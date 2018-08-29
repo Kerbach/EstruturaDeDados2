@@ -5,6 +5,10 @@ public class Node
 
     private String name;
     private int value;
+    private Node left;
+    private Node right;
+    
+    
 
     public String getName()
     {
@@ -24,6 +28,26 @@ public class Node
     public void setValue(int value)
     {
         this.value = value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
     }
 
 }
