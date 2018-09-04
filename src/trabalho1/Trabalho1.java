@@ -26,7 +26,7 @@ public class Trabalho1
                 addNode(tl);
             }
             int t = getValue(arrayBinaryTree.getRoot());
-            System.out.println("Diâmetro: " + arrayBinaryTree.diameter(arrayBinaryTree.getRoot()));
+            System.out.println("Diâmetro: " + arrayBinaryTree.diametro(arrayBinaryTree.getRoot()));
             //System.out.println("Diâmetro: " + tree.getDiameter(tree.getRoot()));
         }
         catch (IOException e)
@@ -54,8 +54,8 @@ public class Trabalho1
             }
 
             arrayBinaryTree.getElement(elemento).setName(conjunto[i]);
-            Node left = arrayBinaryTree.getElement(arrayBinaryTree.leftChild(elemento));
-            Node right = arrayBinaryTree.getElement(arrayBinaryTree.rightChild(elemento));
+            Node left = arrayBinaryTree.getElement(arrayBinaryTree.filhoEsquerda(elemento));
+            Node right = arrayBinaryTree.getElement(arrayBinaryTree.filhoDireita(elemento));
 
             if ((i + 2) > (conjunto.length - 1))
             {
@@ -65,13 +65,13 @@ public class Trabalho1
             if (left.getName().equals(conjunto[i + 2]) || !arrayBinaryTree.hasLeftChild(elemento))
             {
                 pai = elemento;
-                elemento = arrayBinaryTree.leftChild(elemento);
+                elemento = arrayBinaryTree.filhoEsquerda(elemento);
                 continue;
             }
             if (right.getName().equals(conjunto[i + 2]) || !arrayBinaryTree.hasRightChild(elemento))
             {
                 pai = elemento;
-                elemento = arrayBinaryTree.rightChild(elemento);
+                elemento = arrayBinaryTree.filhoDireita(elemento);
                 continue;
             }
         }
@@ -83,11 +83,11 @@ public class Trabalho1
         int t = arrayBinaryTree.getElement(i).getValue();
         if (arrayBinaryTree.hasLeftChild(i))
         {
-            t += getValue(arrayBinaryTree.leftChild(i));
+            t += getValue(arrayBinaryTree.filhoEsquerda(i));
         }
         if (arrayBinaryTree.hasRightChild(i))
         {
-            t += getValue(arrayBinaryTree.rightChild(i));
+            t += getValue(arrayBinaryTree.filhoDireita(i));
         }
         System.out.println(n.getName() + " " + t);
         return t;

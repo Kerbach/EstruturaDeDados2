@@ -21,11 +21,6 @@ public class ArrayBinaryTree
         this.size = 1;
     }
 
-    public ArrayBinaryTree()
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public int getRoot()
     {
         return 1;
@@ -89,17 +84,17 @@ public class ArrayBinaryTree
         return this.size;
     }
 
-    public int parent(int i)
+    public int pai(int i)
     {
         return i / 2;
     }
 
-    public int leftChild(int i)
+    public int filhoEsquerda(int i)
     {
         return i * 2;
     }
 
-    public int rightChild(int i)
+    public int filhoDireita(int i)
     {
         return i * 2 + 1;
     }
@@ -124,11 +119,11 @@ public class ArrayBinaryTree
         System.out.print(getElement(i));
         if (hasLeftChild(i))
         {
-            prefixSearch(leftChild(i));
+            prefixSearch(filhoEsquerda(i));
         }
         if (hasRightChild(i))
         {
-            prefixSearch(rightChild(i));
+            prefixSearch(filhoDireita(i));
         }
     }
 
@@ -136,12 +131,12 @@ public class ArrayBinaryTree
     {
         if (hasLeftChild(i))
         {
-            infixSearch(leftChild(i));
+            infixSearch(filhoEsquerda(i));
         }
         System.out.print(getElement(i));
         if (hasRightChild(i))
         {
-            infixSearch(rightChild(i));
+            infixSearch(filhoDireita(i));
         }
     }
 
@@ -149,16 +144,16 @@ public class ArrayBinaryTree
     {
         if (hasLeftChild(i))
         {
-            postfixSearch(leftChild(i));
+            postfixSearch(filhoEsquerda(i));
         }
         if (hasRightChild(i))
         {
-            postfixSearch(rightChild(i));
+            postfixSearch(filhoDireita(i));
         }
         System.out.print(getElement(i));
     }
 
-    public int depth(int i)
+    public int profundidade(int i)
     {
         int d = 0;
         while (!isRoot(i))
@@ -169,7 +164,7 @@ public class ArrayBinaryTree
         return d;
     }
 
-    public int height(int i)
+    public int altura(int i)
     {
         if (isExternal(i))
         {
@@ -178,30 +173,30 @@ public class ArrayBinaryTree
         int l = 0, r = 0;
         if (!this.array.get(2 * i).getName().equals(" "))
         {
-            l = height(2 * i);
+            l = altura(2 * i);
         }
         if (!this.array.get(2 * i + 1).getName().equals(" "))
         {
-            r = height(2 * i + 1);
+            r = altura(2 * i + 1);
         }
         return Math.max(r, l) + 1;
     }
 
-    public int diameter(int i)
+    public int diametro(int i)
     {
         if (isExternal(i))
         {
             return 0;
         }
-        int d1 = height(i) + 3;
+        int d1 = altura(i) + 3;
         int l = 0, r = 0;
         if (!this.array.get(2 * i).getName().equals(" "))
         {
-            l = diameter(2 * i);
+            l = diametro(2 * i);
         }
         if (!this.array.get(2 * i + 1).getName().equals(" "))
         {
-            r = diameter(2 * i + 1);
+            r = diametro(2 * i + 1);
         }
         return Math.max(d1, Math.max(l, r));
     }
