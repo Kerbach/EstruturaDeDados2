@@ -158,7 +158,7 @@ public class ArrayBinaryTree
         System.out.print(getElement(i));
     }
 
-    public int profundidade(int i)
+    public int depth(int i)
     {
         int d = 0;
         while (!isRoot(i))
@@ -169,7 +169,7 @@ public class ArrayBinaryTree
         return d;
     }
 
-    public int altura(int i)
+    public int height(int i)
     {
         if (isExternal(i))
         {
@@ -178,36 +178,31 @@ public class ArrayBinaryTree
         int l = 0, r = 0;
         if (!this.array.get(2 * i).getName().equals(" "))
         {
-            l = altura(2 * i);
+            l = height(2 * i);
         }
         if (!this.array.get(2 * i + 1).getName().equals(" "))
         {
-            r = altura(2 * i + 1);
+            r = height(2 * i + 1);
         }
         return Math.max(r, l) + 1;
     }
 
-    public static int getDiameter(Node root)
+    public int diameter(int i)
     {
-        if (root == null)
+        if (isExternal(i))
         {
             return 0;
         }
-        
-        int rootDiameter = getHeight(root.getLeft()) + getHeight(root.getRight()) + 1;
-        int leftDiameter = getDiameter(root.getLeft());
-        int rightDiameter = getDiameter(root.getRight());
-
-        return Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
-    }
-
-    public static int getHeight(Node root)
-    {
-        if (root == null)
+        int d1 = height(i) + 3;
+        int l = 0, r = 0;
+        if (!this.array.get(2 * i).getName().equals(" "))
         {
-            return 0;
+            l = diameter(2 * i);
         }
-
-        return Math.max(getHeight(root.getLeft()), getHeight(root.getRight())) + 1;
+        if (!this.array.get(2 * i + 1).getName().equals(" "))
+        {
+            r = diameter(2 * i + 1);
+        }
+        return Math.max(d1, Math.max(l, r));
     }
 }

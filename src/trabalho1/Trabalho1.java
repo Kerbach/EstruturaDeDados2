@@ -1,6 +1,5 @@
 package trabalho1;
 
-import trabalho1.ArrayBinaryTree;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class Trabalho1
                 addNode(tl);
             }
             int t = getValue(arrayBinaryTree.getRoot());
-            System.out.println("Altura: " + arrayBinaryTree.altura(arrayBinaryTree.getRoot()));
+            System.out.println("Diâmetro: " + arrayBinaryTree.diameter(arrayBinaryTree.getRoot()));
             //System.out.println("Diâmetro: " + tree.getDiameter(tree.getRoot()));
         }
         catch (IOException e)
