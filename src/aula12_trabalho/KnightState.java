@@ -14,7 +14,7 @@ import static aula12_trabalho.KnightSolver.resolveRecursao;
 public class KnightState
 {
     // Tamanho do tabuleiro
-    static int N = 8; 
+    static int N = 6; 
     // de 0 a 7
     static int posicaoInicalX = 0; 
     static int posicaoInicalY = 0; 

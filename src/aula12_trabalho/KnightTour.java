@@ -63,7 +63,7 @@ public class KnightTour
         int movimentoX[] = {2, 1, -1, -2, -2, -1, 1, 2}; 
         int movimentoY[] = {1, 2, 2, 1, -1, -2, -2, -1}; 
   
-        solucao[7][7] = 0; 
+        solucao[0][0] = 0; 
   
         /* começa do 0,0 e explora todos os caminhos usando solveKTUtil() */
         if (!solveKTUtil(0, 0, 1, solucao, movimentoX, movimentoY)) 

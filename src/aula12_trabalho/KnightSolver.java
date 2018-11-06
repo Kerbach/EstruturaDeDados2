@@ -35,7 +35,7 @@ public class KnightSolver
     static boolean resolveRecursao(int x, int y, int movimentoI, int solucao[][], int movimentoX[], int movimentoY[])
     { 
         int k, proximoX, proximoY; 
-        if (movimentoI == N * N) 
+        if (movimentoI == N * N  &&((x == 2 && y == 1) || (x == 1 && y == 2))) 
         //if (movimentoI == N * N && ((x == 1 && y == 2) || (x == 2 && y == 1)) ) 
             return true; 
   
